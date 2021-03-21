@@ -95,13 +95,15 @@ ChatBot &ChatBot::operator=(ChatBot &&source) {
     return *this;
 
   delete _image;
-
+  // _image = new wxBitmap(); // Do I need to allocate memory to a new image
+  // here ? If yes, where is it deleted? Do I need to do this as well in Copy
+  // ctr, Copy assign. operator and Move ctr?
   _image = source._image;
   _chatLogic = source._chatLogic;
   _rootNode = source._rootNode;
   _currentNode = source._currentNode;
 
-  source._image = NULL;
+  source._image = NULL; // nullptr works here as well but I don't know why...
   source._chatLogic = nullptr;
   source._currentNode = nullptr;
   source._rootNode = nullptr;

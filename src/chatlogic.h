@@ -1,12 +1,12 @@
 #ifndef CHATLOGIC_H_
 #define CHATLOGIC_H_
 
-#include "chatgui.h"
+#include "chatgui.h" //no need to include the headers of chatbot, graphedge and graphnode here ? only in cpp? I am confused with the includes (headers and standard headers)
 #include <memory>
 #include <string>
 #include <vector>
 
-// forward declarations
+// forward declarations //what does this means a forward declaration?
 class ChatBot;
 class GraphEdge;
 class GraphNode;

@@ -58,7 +58,7 @@ void ChatLogic::AddAllTokensToElement(std::string tokenID, tokenlist &tokens,
         [&tokenID](const std::pair<std::string, std::string> &pair) {
           return pair.first == tokenID;
           ;
-        });
+        }); // I am not sure I totally get how the std::find_if works
     if (token != tokens.end()) {
       element.AddToken(token->second); // add new keyword to edge
       token++;                         // increment iterator to next element
@@ -222,9 +222,9 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename) {
   // _chatBot = &localChatBot;
 
   localChatBot.SetRootNode(rootNode);
-  rootNode->MoveChatbotHere(std::move(localChatBot));
-  //   _chatBot->SetRootNode(rootNode);
-  //   rootNode->MoveChatbotHere(_chatBot);
+  rootNode->MoveChatbotHere(std::move(
+      localChatBot)); // so the move constructor is called at this line and the
+                      // move assign. operator in line 33 of graphnode.cpp ?
   ////
   //// EOF STUDENT CODE
 }
